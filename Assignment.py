@@ -2,7 +2,7 @@ import json
 with open('precipitation.json', encoding='utf-8') as file:
     precipitation = json.load(file)
 
-# Part 1, 2
+# PART 1, 2
 seattle_list= []
 for measurement in precipitation:
     station_code = measurement['station']
@@ -10,7 +10,7 @@ for measurement in precipitation:
         seattle_list.append(measurement)
 print(seattle_list)
 
-# Part 1, 3
+# PART 1, 3
 months_sum_precipitation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 for months in seattle_list:
     date = str(months['date'])
@@ -43,7 +43,7 @@ print(months_sum_precipitation)
 #print(months_dictionary)
 
 
-# Part 1, 3
+# PART 1, 3
 Seattle = {
     "Seattle": {
         "station": "GHCND:US1WAKG0038",
@@ -84,3 +84,30 @@ Seattle = {
 }
 with open('results.json', 'w', encoding='utf-8') as file:
     json.dump(Seattle, file, indent = 4)
+
+# PART 3, 1
+from csv import DictReader
+with open('stations.csv') as file:
+    reader = DictReader(file)
+    items = list(reader)
+
+def calculate_monthly(station_code):
+    # calculate the totals per month for states
+    total_precipitation_monthly = [0] * 12
+    for measurement in precipitation:
+        if measurement['station'] == station_code:
+            date_split = measurement['date'].split('-')
+            month = int(date_split[1])
+            total_precipitation_monthly[month -1] += measurement['value']
+
+    #calculating the total over the whole year
+    yearly_precipitation_total = sum(total_precipitation_monthly)
+
+    #calculating the relative percentages per month
+    relative_monthly_precipitation_other = []
+    for monthly_precipitation_other in total_precipitation_monthly:
+        relative_monthly_precipitation_other.append(monthly_precipitation_other/yearly_precipitation_total)
+
+calculate_monthly('GHCND:US1CASD0032')
+print(calculate_monthly)
+# return <function calculate_monthly at 0x10108e5c0>, and I'm not sure what this exactly means :((

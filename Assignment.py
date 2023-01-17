@@ -44,3 +44,5 @@ print(months_sum_precipitation)
 
 
 # .1.4
+with open('results.json', 'w', encoding='utf-8') as file:
+    json.dump(months_sum_precipitation, file, indent = 4)

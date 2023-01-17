@@ -11,7 +11,7 @@ for measurement in precipitation:
 #print(dict_seattle)
 
 # Part 1, 3
-months_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+months_sum_precipitation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 for months in seattle_list:
     date = str(months['date'])
     date_split = date.split('-')
@@ -19,8 +19,8 @@ for months in seattle_list:
     month = int(month)
     index = month -1
     value = months['value']
-    months_list[index] += value
-print(months_list)
+    months_sum_precipitation[index] += value
+print(months_sum_precipitation)
 
 # Below is my process of thinking about EX.1.3
 #x = range(12)

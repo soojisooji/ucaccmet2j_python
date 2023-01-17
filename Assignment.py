@@ -28,14 +28,14 @@ print(months_sum_precipitation)
 #for month in x:
 #    month_value = []
 #    precipitation_list.append(month_value)
-
+# --------
 #for date_seattle in dict_seattle:
 #    date = str(date_seattle["date"])
 #    date = date.split('-')
 #    if date[1] == (f'0{month}') or (f'{month}'):
 #        precipitation_list[month].append(date_seattle['value'])
 #print(precipitation_list)
-
+# ----------
 #months_dictionary = {'1':'0', '2':'0', '3':'0', '4':'0', '5':'0', '6':'0', '7':'0', '8':'0', '9':'0', '10':'0', '11':'0', '12':'0'}
 #for dict_item in precipitation:
 #    if dict_item['date'].startswith('2010-02'):
@@ -44,9 +44,18 @@ print(months_sum_precipitation)
 
 
 # Part 1, 3
+Seattle = {
+    "Seattle": {
+        "station": "GHCND:US1WAKG0038",
+        "state": "WA",
+        "total_monthly_precipitation": months_sum_precipitation
+        #"total_yearly_precipitation": ...,
+        #"relative_monthly_precipitation": [...],
+        #"relative_yearly_precipitation": ...
+    }
+}
 with open('results.json', 'w', encoding='utf-8') as file:
-    json.dump(months_sum_precipitation, file, indent = 4)
-
+    json.dump(Seattle, file, indent = 4)
 
 # PART 2, 1
 total_yearly_precipitation = 0
@@ -61,3 +70,17 @@ for monthly_precipitation in months_sum_precipitation:
     rounded_ratio = round(relative_ratio, 2)
     relative_monthly_precipitation.append(rounded_ratio)
 print(relative_monthly_precipitation)
+
+# PART 2, 3
+Seattle = {
+    "Seattle": {
+        "station": "GHCND:US1WAKG0038",
+        "state": "WA",
+        "total_monthly_precipitation": months_sum_precipitation,
+        "total_yearly_precipitation": total_yearly_precipitation,
+        "relative_monthly_precipitation": relative_monthly_precipitation,
+        #"relative_yearly_precipitation": ...
+    }
+}
+with open('results.json', 'w', encoding='utf-8') as file:
+    json.dump(Seattle, file, indent = 4)

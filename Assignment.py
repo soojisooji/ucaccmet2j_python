@@ -8,7 +8,7 @@ for measurement in precipitation:
     station_code = measurement['station']
     if station_code == 'GHCND:US1WAKG0038':
         seattle_list.append(measurement)
-#print(dict_seattle)
+print(seattle_list)
 
 # Part 1, 3
 months_sum_precipitation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -43,6 +43,21 @@ print(months_sum_precipitation)
 #print(months_dictionary)
 
 
-# .1.4
+# Part 1, 3
 with open('results.json', 'w', encoding='utf-8') as file:
     json.dump(months_sum_precipitation, file, indent = 4)
+
+
+# PART 2, 1
+total_yearly_precipitation = 0
+for total_sum in seattle_list:
+    total_yearly_precipitation += total_sum['value']
+print(total_yearly_precipitation)
+
+# PART 2, 2
+relative_monthly_precipitation = []
+for monthly_precipitation in months_sum_precipitation:
+    relative_ratio = monthly_precipitation/total_yearly_precipitation
+    rounded_ratio = round(relative_ratio, 2)
+    relative_monthly_precipitation.append(rounded_ratio)
+print(relative_monthly_precipitation)

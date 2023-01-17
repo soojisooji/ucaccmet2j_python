@@ -11,17 +11,22 @@ for measurement in precipitation:
 #print(dict_seattle)
 
 # Part 1, 3
-date_seattle = []
-for date_code in dict_seattle:
-    date = date_code['date']
-    if date_split = date.split('-')
-    date_seattle.append(measurement)
-print(date_seattle)
 
+x = range(12)
+precipitation_list = []
+for month in x:
+    month_value = []
+    precipitation_list.append(month_value)
 
-total_precipitation = 0
-for total in dict_seattle:
-    total_precipitation += total['value']
-#print(total_precipitation)
+for date_seattle in dict_seattle:
+    date = str(date_seattle["date"])
+    date = date.split('-')
+    if date[1] == (f'0{month}') or (f'{month}'):
+        precipitation_list[month].append(date_seattle['value'])
+print(precipitation_list)
 
-
+#month_sum = 0
+#for month_value in month:
+#    if month_value = [x]
+#        month_sum += precipitation_list[]
+#print(month_sum)
